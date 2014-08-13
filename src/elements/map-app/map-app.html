@@ -6,18 +6,29 @@
     <link rel="stylesheet" href="map-app.css">
 
     <google-map fit fitToMarkers>
-      <google-map-marker latitude="{{marker.latitude}}"longitude="{{marker.longitude}}"
-          title="{{marker.title}}"></google-map-marker>
+
+      <template repeat="{{marker in markers}}">
+        <google-map-marker latitude="{{marker.latitude}}"longitude="{{marker.longitude}}"
+            title="{{marker.title}}"></google-map-marker>
+      </template>
+
     </google-map>
 
   </template>
   <script>
     Polymer("map-app", {
-      marker: {
-        latitude: 37.4221,
-        longitude: -122.0844,
-        title: "Drag me baby one more time",
-      }
+      markers: [
+        {
+          latitude: 37.4221,
+          longitude: -122.0844,
+          title: "Drag me baby one more time",
+        },
+        {
+          latitude: 40.74093,
+          longitude: -74.002158,
+          title: "Drag me baby two more times",
+        },
+      ]
     });
   </script>
 </polymer-element>

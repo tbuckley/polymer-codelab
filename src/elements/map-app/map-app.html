@@ -5,9 +5,19 @@
   <template>
     <link rel="stylesheet" href="map-app.css">
 
-    <google-map></google-map>
+    <google-map fit fitToMarkers>
+      <google-map-marker latitude="{{marker.latitude}}"longitude="{{marker.longitude}}"
+          title="{{marker.title}}"></google-map-marker>
+    </google-map>
+
   </template>
   <script>
-    Polymer("map-app", {});
+    Polymer("map-app", {
+      marker: {
+        latitude: 37.4221,
+        longitude: -122.0844,
+        title: "Drag me baby one more time",
+      }
+    });
   </script>
 </polymer-element>

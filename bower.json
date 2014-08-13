@@ -1,0 +1,9 @@
+{
+  "name": "web",
+  "private": true,
+  "dependencies": {
+    "platform": "Polymer/platform#master",
+    "polymer": "Polymer/polymer#master",
+    "google-map": "GoogleWebComponents/google-map#~0.3.1"
+  }
+}

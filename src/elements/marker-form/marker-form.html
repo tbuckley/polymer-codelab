@@ -1,15 +1,19 @@
 <link rel="import" href="../../components/polymer/polymer.html">
 <link rel="import" href="../../components/paper-input/paper-input.html">
 <link rel="import" href="../../components/paper-button/paper-button.html">
+<link rel="import" href="../../components/font-roboto/font-roboto.html">
 
 <polymer-element name="marker-form" attributes="">
   <template>
     <link rel="stylesheet" href="marker-form.css">
 
-    <paper-input label="Name"></paper-input>
-    <paper-input label="Latitude"></paper-input>
-    <paper-input label="Longitude"></paper-input>
-    <paper-button label="Add"></paper-button>
+    <section layout vertical>
+
+      <paper-input label="Name"></paper-input>
+      <paper-input label="Location"></paper-input>
+      <paper-button label="Add" raisedButton></paper-button>
+
+    </section>
 
 
   </template>

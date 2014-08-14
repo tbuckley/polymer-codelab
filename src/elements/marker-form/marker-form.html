@@ -1,7 +1,7 @@
 <link rel="import" href="../../components/polymer/polymer.html">
 <link rel="import" href="../../components/paper-input/paper-input.html">
 <link rel="import" href="../../components/paper-button/paper-button.html">
-<link rel="import" href="../../components/font-roboto/font-roboto.html">
+<link rel="import" href="../../components/font-roboto/roboto.html">
 
 <polymer-element name="marker-form" attributes="">
   <template>
@@ -9,15 +9,22 @@
 
     <section layout vertical>
 
-      <paper-input label="Name"></paper-input>
-      <paper-input label="Location"></paper-input>
-      <paper-button label="Add" raisedButton></paper-button>
+      <paper-input label="Name" value="{{name}}"></paper-input>
+      <paper-input label="Location" value="{{location}}"></paper-input>
+      <paper-button label="Add" raisedButton on-tap="{{addLocation}}"></paper-button>
 
     </section>
 
 
   </template>
   <script>
-    Polymer("marker-form", {});
+    Polymer("marker-form", {
+      addLocation: function() {
+        this.fire("add-marker", {
+          name: this.name,
+          location: this.location,
+        });
+      },
+    });
   </script>
 </polymer-element>

@@ -1,39 +1,45 @@
 <link rel="import" href="../../components/polymer/polymer.html">
 <link rel="import" href="../../components/google-map/google-map.html">
+<link rel="import" href="../../components/google-map/google-map-search.html">
 <link rel="import" href="../marker-form/marker-form.html">
 
 <polymer-element name="map-app" attributes="">
   <template>
     <link rel="stylesheet" href="map-app.css">
 
+    <google-map-search map="{{map}}" query="{{query}}" result="{{result}}"></google-map-search>
+
     <div fit layout horizontal>
 
-      <google-map flex fitToMarkers>
+      <google-map map="{{map}}" flex fitToMarkers>
         <template repeat="{{marker in markers}}">
           <google-map-marker latitude="{{marker.latitude}}"longitude="{{marker.longitude}}"
               title="{{marker.title}}"></google-map-marker>
         </template>
       </google-map>
 
-      <marker-form></marker-form>
+      <marker-form on-add-marker="{{addMarker}}"></marker-form>
 
     </div>
 
   </template>
   <script>
     Polymer("map-app", {
-      markers: [
-        {
-          latitude: 37.4221,
-          longitude: -122.0844,
-          title: "Drag me baby one more time",
-        },
-        {
-          latitude: 40.74093,
-          longitude: -74.002158,
-          title: "Drag me baby two more times",
-        },
-      ]
+      markers: [],
+
+      addMarker: function(e, details, sender) {
+        console.log("addMarker", details.location);
+        this.query = details.location;
+        this.name = details.name;
+      },
+
+      resultChanged: function() {
+        this.markers.push({
+          latitude: this.result.latitude,
+          longitude: this.result.longitude,
+          title: this.name,
+        });
+      },
     });
   </script>
 </polymer-element>

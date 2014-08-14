@@ -1,18 +1,23 @@
 <link rel="import" href="../../components/polymer/polymer.html">
 <link rel="import" href="../../components/google-map/google-map.html">
+<link rel="import" href="../marker-form/marker-form.html">
 
 <polymer-element name="map-app" attributes="">
   <template>
     <link rel="stylesheet" href="map-app.css">
 
-    <google-map fit fitToMarkers>
+    <div fit layout vertical>
 
-      <template repeat="{{marker in markers}}">
-        <google-map-marker latitude="{{marker.latitude}}"longitude="{{marker.longitude}}"
-            title="{{marker.title}}"></google-map-marker>
-      </template>
+      <google-map flex fitToMarkers>
+        <template repeat="{{marker in markers}}">
+          <google-map-marker latitude="{{marker.latitude}}"longitude="{{marker.longitude}}"
+              title="{{marker.title}}"></google-map-marker>
+        </template>
+      </google-map>
 
-    </google-map>
+      <marker-form></marker-form>
+
+    </div>
 
   </template>
   <script>
